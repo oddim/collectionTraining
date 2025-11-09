@@ -1,0 +1,62 @@
+using System;
+using System.Collections.Generic;
+
+namespace Vocabulary
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Dictionary<string,string> wordsDictionary = new Dictionary<string,string>();
+
+            wordsDictionary.Add("Переменная", "Это идентификатор, используемый для хранения значений в памяти компьютера. Программист может присваивать и изменять значения переменных.");
+            wordsDictionary.Add("Функция", "Это блок кода, который выполняет определенную операцию. Функции могут быть вызваны и использованы в различных частях программы.");
+            wordsDictionary.Add("Класс", "Это шаблон или описание для создания объектов. Класс определяет свойства и методы, которые могут быть использованы объектами этого класса.");
+            wordsDictionary.Add("Цикл", "Это конструкция, позволяющая программе выполнять определенный блок кода многократно. Циклы могут быть контролируемыми или бесконечными, в зависимости от задачи.");
+            wordsDictionary.Add("Массив", "Это структура данных, позволяющая хранить множество элементов одного типа. Элементы массива могут быть обращены по индексу.");
+
+            const string ExitProgramm = "exit";
+
+            bool isRun = true;
+            bool isWordFound = false;
+
+            while (isRun)
+            {
+                Console.WriteLine("Введите слово для толкования. Подсказка: Переменная, Функция, Класс, Цикл, Массив");
+                string userInput = Console.ReadLine();
+
+                foreach (var key in wordsDictionary)
+                {
+                    userInput = userInput.ToLower();
+                    string itemWord = key.Key.ToLower();
+
+                    if (userInput == itemWord)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine(key.Key + " - " + key.Value);
+                        Console.WriteLine();
+
+                        isWordFound = true;
+                    }
+                }
+
+                if (userInput == ExitProgramm)
+                {
+                    isRun = false;
+                    break;
+                }
+
+                if (isWordFound == false)
+                {
+                    Console.WriteLine("Такое слово отсутствует в словаре");
+                }
+
+                Console.WriteLine("Для выхода ввести - " + ExitProgramm);
+
+                Console.ReadKey();
+
+                Console.Clear();
+            }
+        }
+    }
+}

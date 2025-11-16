@@ -1,0 +1,65 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace DinamicList
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            const string SumCommand = "sum";
+            const string ExitCommand = "exit";
+            const int SecondLine = 1;
+            const int ThirdLine = 2;
+            const int LastLine = 3;
+
+            List<int> numbers = new List<int>();
+
+            bool isRun = true;
+
+            while (isRun)
+            {
+                Console.SetCursorPosition(0, LastLine);
+                Console.WriteLine("Для получения всех введенных чисел введите команду sum, для выхода - exit");
+
+                Console.SetCursorPosition(0, 0);
+                Console.Write("Введите число для записи в массив:");
+                string userInput = Console.ReadLine();
+
+                Console.Clear();
+
+                if (int.TryParse(userInput, out int numberInput))
+                {
+                    numbers.Add(numberInput);
+
+                    Console.SetCursorPosition(0, SecondLine);
+                    Console.Write("Числа в массиве:");
+                    foreach (int i in numbers)
+                       Console.Write(" " + i + ",");
+                }
+                else if(userInput == SumCommand )
+                {
+                    int sumNumbers = 0;
+
+                    for (int i = 0; i < numbers.Count(); i++)
+                    {
+                        sumNumbers += numbers[i];
+                    }
+
+                    Console.SetCursorPosition(0, ThirdLine);
+                    Console.WriteLine("Сумма введенных чисел - " + sumNumbers);
+                }
+                else if(userInput == ExitCommand)
+                {
+                    isRun = false;
+                }
+
+                Console.SetCursorPosition(0, 1);
+                Console.Write("Числа в массиве:");
+                foreach (int i in numbers)
+                    Console.Write(" " + i + ",");
+            }
+        }
+    }
+}

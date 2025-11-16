@@ -1,0 +1,35 @@
+using System;
+using System.Collections.Generic;
+
+namespace QueueCustomers
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Queue<int> queueCustomers = new Queue<int>();
+
+            queueCustomers.Enqueue(1231);
+            queueCustomers.Enqueue(221);
+            queueCustomers.Enqueue(3142);
+            queueCustomers.Enqueue(334);
+            queueCustomers.Enqueue(50);
+
+            int revenueToday = 0;
+
+            for (int i = 0; 0 < queueCustomers.Count; i++)
+            {
+                int sumPurchase = queueCustomers.Dequeue();
+                revenueToday += sumPurchase;
+
+                Console.WriteLine("Выручка за сегодня - " + revenueToday);
+                Console.WriteLine("Покупатель совершил покупку на сумму - " + sumPurchase);
+
+                Console.WriteLine("Нажмите любую кнопку для продолжения");
+                Console.ReadKey();
+
+                Console.Clear();
+            }
+        }
+    }
+}

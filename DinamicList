@@ -21,7 +21,7 @@ namespace DinamicList
             while (isRun)
             {
                 Console.SetCursorPosition(0, LastLine);
-                Console.WriteLine("Для получения всех введенных чисел введите команду sum, для выхода - exit");
+                Console.WriteLine($"Для получения всех введенных чисел введите команду {SumCommand}, для выхода - {ExitCommand}");
 
                 Console.SetCursorPosition(0, 0);
                 Console.Write("Введите число для записи в массив:");
@@ -32,34 +32,34 @@ namespace DinamicList
                 if (int.TryParse(userInput, out int numberInput))
                 {
                     numbers.Add(numberInput);
-
-                    Console.SetCursorPosition(0, SecondLine);
-                    Console.Write("Числа в массиве:");
-                    foreach (int i in numbers)
-                       Console.Write(" " + i + ",");
                 }
-                else if(userInput == SumCommand )
-                {
-                    int sumNumbers = 0;
-
-                    for (int i = 0; i < numbers.Count(); i++)
-                    {
-                        sumNumbers += numbers[i];
-                    }
-
-                    Console.SetCursorPosition(0, ThirdLine);
-                    Console.WriteLine("Сумма введенных чисел - " + sumNumbers);
-                }
-                else if(userInput == ExitCommand)
+                else if (userInput == ExitCommand)
                 {
                     isRun = false;
                 }
+                else if (userInput == SumCommand)
+                {
+                    GetSumNumbers(numbers, ThirdLine);      
+                }
 
-                Console.SetCursorPosition(0, 1);
+                Console.SetCursorPosition(0, SecondLine);
                 Console.Write("Числа в массиве:");
                 foreach (int i in numbers)
                     Console.Write(" " + i + ",");
             }
+        }
+
+        static void  GetSumNumbers (List<int> numbers, int ThirdLine)
+        {
+            int sumNumbers = 0;
+
+            for (int i = 0; i < numbers.Count(); i++)
+            {
+                sumNumbers += numbers[i];
+            }
+
+            Console.SetCursorPosition(0, ThirdLine);
+            Console.WriteLine("Сумма введенных чисел - " + sumNumbers);
         }
     }
 }

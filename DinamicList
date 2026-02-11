@@ -39,17 +39,18 @@ namespace DinamicList
                 }
                 else if (userInput == SumCommand)
                 {
-                    GetSumNumbers(numbers, ThirdLine);      
+                    ShowSumNumbers(numbers, ThirdLine);      
                 }
 
                 Console.SetCursorPosition(0, SecondLine);
                 Console.Write("Числа в массиве:");
-                foreach (int i in numbers)
-                    Console.Write(" " + i + ",");
+
+                foreach (int n in numbers)
+                    Console.Write(" " + n + ",");
             }
         }
 
-        static void  GetSumNumbers (List<int> numbers, int ThirdLine)
+        static void ShowSumNumbers(List<int> numbers, int ThirdLine)
         {
             int sumNumbers = 0;
 
